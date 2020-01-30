@@ -1,0 +1,40 @@
+header {
+    background-image: url(images/brown4.jpg) ;
+    background-size: cover;
+   color:white;
+    padding: 5%;
+
+}
+
+
+
+/* || SEPARATION
+=====================================================================*/
+
+.separation {
+    width: 70%;
+    margin:auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+@media (max-width:576px) {
+    .carte-tableau-ligne {
+        text-align: center;
+    }
+}
+
+.table .thead-dark .table-title {
+    background-color: #372F2E;
+    color:white;
+    text-align: center;
+}
+.hero {
+    text-align: center;
+}
+.hero .titre_catalogue {
+
+      line-height: 30vh;
+    font-weight: bold;
+    margin-top: 3.3rem;
+}
+
