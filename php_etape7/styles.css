@@ -54,3 +54,6 @@ header {
     margin:auto;
 }
 
+.formulaire .row .error {
+    font-size: 10px;
+}

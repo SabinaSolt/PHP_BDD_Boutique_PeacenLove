@@ -31,11 +31,11 @@ foreach ($arr_catalogue as $index => $articleCatalogue) {
         // si la quantité a été saisi pour un article
         if (isset($_POST[$nomQuantite])) {
             // verifie que la quantité est un entier
-            if (is_int(intval($_POST[$nomQuantite]))) {
+            if (is_int(intval($_POST[$nomQuantite])) AND intval($_POST[$nomQuantite])>0) {
                 array_push($arr_quantite, intval($_POST[$nomQuantite]));
                 $arr_error[$index] = "";
             } else {
-                $arr_error[$index] = "Quantité doit être un nombre entier";
+                $arr_error[$index] = "Quantité doit être un nombre entier supérieur à 0";
                 $alerte_erreur = true;
                 array_push($arr_quantite, 0);
             }
@@ -98,7 +98,7 @@ if(isset($_POST['buttonAddArticle'])) {
         } ?>
         <br>
         <div class=" col-sm-2 d-inline-flex ">
-            <button class="btn btn-primary p-2" type="submit" name="buttonSubmit"> Soumettre</button>
+            <button class="btn btn-primary p-2" type="submit" name="buttonSubmit"> Soumettre / Calculer le total</button>
 
             <button class="btn btn-primary p-2" type="submit" name="buttonAddArticle"> Revenir au catalogue</button>
         </div>
