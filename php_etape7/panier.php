@@ -16,18 +16,18 @@
 <?php
 
 include ('catalogue.php');
-
+include('totalPanier.php')
 ?>
 <header class="hero" >
     <h2 class ="titre_catalogue"> BOUTIQUE PEACE'N'LOVE </h2>
     <p > Vous voulez en avoir plein les yeux? Votre porte-monnaie pèse trop lourd? Alors venez faire un tour dans mon e-boutique -
         le meilleur magasin en ligne du prêt-à-porter dans tout Apprieu!</p>
 </header>
-<div class="container p-3 my-3 border bg-dark text-white rounded ">
+<div class="container p-3 my-3   border bg-dark text-white rounded ">
     <h2 class="form-label col-sm-12 text-center">Nos articles</h2>
     <br>
 
-    <form  class ="form-horizontal formulaire" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="POST" enctype="multipart/form-data">
+    <form  class ="form-horizontal m-3  formulaire" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="POST" enctype="multipart/form-data">
         <?php foreach($arr_catalogue as $index=>$articleCatalogue) {
             if($_SESSION['checkBoxes'][$index]==1) {
             ?>
@@ -42,6 +42,8 @@ include ('catalogue.php');
             </div>
             <?php }
         } ?>
+        <?php echo '<div class=" sous-total container my-3 mr-3 bg-light text-dark rounded col-sm-2 float-right" > Total: ',
+        totalPanier($arr_catalogue,$_SESSION['checkBoxes']), ' €</div>' ?>
         <br>
         <button class="btn btn-primary" type="submit" name="buttonSubmit"> Soumettre </button>
 
