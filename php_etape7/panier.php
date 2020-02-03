@@ -57,6 +57,11 @@ foreach ($arr_catalogue as $index => $articleCatalogue) {
 }
 
 $_SESSION['quantite'] =$arr_quantite;
+if(isset($_POST['buttonAddArticle'])) {
+    header("Location:http://localhost/tests_Sabina/PHP_Sabina/php_etape7/addArticle.php");
+    exit;
+}
+
 
 ?>
 <header class="hero" >
@@ -92,8 +97,11 @@ $_SESSION['quantite'] =$arr_quantite;
             totalPanier($arr_catalogue,$_SESSION['checkBoxes'],$_SESSION['quantite'] ), ' €</div>';
         } ?>
         <br>
-        <button class="btn btn-primary" type="submit" name="buttonSubmit"> Soumettre </button>
+        <div class=" col-sm-2 d-inline-flex ">
+            <button class="btn btn-primary p-2" type="submit" name="buttonSubmit"> Soumettre</button>
 
+            <button class="btn btn-primary p-2" type="submit" name="buttonAddArticle"> Revenir au catalogue</button>
+        </div>
     </form>
 </div>
 
