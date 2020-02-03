@@ -16,7 +16,48 @@
 <?php
 
 include ('catalogue.php');
-include('totalPanier.php')
+include('totalPanier.php');
+$arr_quantite=[];
+$arr_error=[];
+$_SESSION['quantite'] =[];
+$alerte_erreur =false;
+
+
+foreach ($arr_catalogue as $index => $articleCatalogue) {
+    $nomQuantite = 'quantite' . $index;
+    $nomDelete ='delete' . $index;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") //Vérifie que le formulaire a été posté
+    {
+        // si la quantité a été saisi pour un article
+        if (isset($_POST[$nomQuantite])) {
+            // verifie que la quantité est un entier
+            if (is_int(intval($_POST[$nomQuantite]))) {
+                array_push($arr_quantite, intval($_POST[$nomQuantite]));
+                $arr_error[$index] = "";
+            } else {
+                $arr_error[$index] = "Quantité doit être un nombre entier";
+                $alerte_erreur = true;
+                array_push($arr_quantite, 0);
+            }
+        }
+        // si la quantité n'a pas été saisie
+        else {
+            array_push($arr_quantite, 0);
+            $arr_error[$index] = "";
+        }
+        if(isset($_POST[$nomDelete])) {
+            $_SESSION['checkBoxes'][$index]=0;
+        }
+    }
+    // définit les  quantites = 0 si le formulaire n'est pas posté
+    else {
+        array_push($arr_quantite, 0);
+        $arr_error[$index] = "";
+    }
+}
+
+$_SESSION['quantite'] =$arr_quantite;
+
 ?>
 <header class="hero" >
     <h2 class ="titre_catalogue"> BOUTIQUE PEACE'N'LOVE </h2>
@@ -34,16 +75,22 @@ include('totalPanier.php')
 
             <div class="row container my-3 bg-light text-dark rounded ">
 
-                <div class="col-sm-3"> <img class ="" src =" <?php echo $articleCatalogue[2] ?> "alt="image"></div>
-                <div class ="col-sm-5 "><?php echo $articleCatalogue[0]?> </div>
+                <div class="col-sm-2"> <img class ="" src =" <?php echo $articleCatalogue[2] ?> "alt="image"></div>
+                <div class ="col-sm-3 "><?php echo $articleCatalogue[0]?> </div>
                 <div class ="col-sm-2 rounded-circle price "> <?php echo $articleCatalogue[1] ?> €</div>
-                <input class="form-control col-sm-2 " type="checkbox" name ="<?php echo 'checkbox'.$index?>" checked>
-
+                <input class="form-control col-sm-1 " type="checkbox" name ="<?php echo 'checkbox'.$index?>" checked>
+                <div class=" col-sm-2 "> Quantité: <input type="number" name="<?php echo 'quantite' . $index ?>"
+                                                          value="<?php echo $_SESSION['quantite'][$index] ?>">
+                    <span class="error text-danger"> <?php echo $arr_error[$index] ?></span><br>
+                    <button class="btn btn-secondary" type="submit" name="<?php echo 'delete' . $index ?>"> Supprimer</button>
+                </div>
             </div>
             <?php }
         } ?>
-        <?php echo '<div class=" sous-total container my-3 mr-3 bg-light text-dark rounded col-sm-2 float-right" > Total: ',
-        totalPanier($arr_catalogue,$_SESSION['checkBoxes']), ' €</div>' ?>
+        <?php  if(!$alerte_erreur) {
+            echo '<div class=" sous-total container my-3 mr-3 bg-light text-dark rounded col-sm-2 float-right" > Total: ',
+            totalPanier($arr_catalogue,$_SESSION['checkBoxes'],$_SESSION['quantite'] ), ' €</div>';
+        } ?>
         <br>
         <button class="btn btn-primary" type="submit" name="buttonSubmit"> Soumettre </button>
 
