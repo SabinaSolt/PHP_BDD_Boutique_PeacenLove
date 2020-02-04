@@ -15,7 +15,7 @@ include('functions.php');?>
 </head>
 <body>
 <header class="hero" >
-    <h2 class ="titre_catalogue"> BOUTIQUE PEACE'N'LOVE </h2>
+    <h2 class ="titre_catalogue d-sm-flex"> BOUTIQUE PEACE'N'LOVE </h2>
     <p > Vous voulez en avoir plein les yeux? Votre porte-monnaie pèse trop lourd?
         Alors venez faire un tour dans mon e-boutique -
         le meilleur magasin en ligne du prêt-à-porter dans tout Apprieu!</p>
