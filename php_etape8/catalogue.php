@@ -1,8 +1,9 @@
 <?php
 $arr_catalogue = [
-    ["Jupe",25,"images/jupe_large.jpg"],
-    ["Foulard",10,"images/foulard_large.jpg"],
-    ["Chemise",30,"images/chemise_large.jpg"],
+    ["Chapka",50,"images/chapka.jpg"],
+    ["Valenki",70,"images/valenki.jpg"],
+    ["Manteau",60,"images/manteau.jpg"],
+    ["Haut",15,"images/haut.jpg"],
 ];
 
 

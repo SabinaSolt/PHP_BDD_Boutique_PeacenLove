@@ -27,7 +27,7 @@ if(!empty($_SESSION['checkBoxes'])) {
                 // si la quantité a été saisi pour un article
                 if (isset($_POST[$nomQuantite])) {
                     // verifie que la quantité est un entier
-                    if (is_int(intval($_POST[$nomQuantite])) AND intval($_POST[$nomQuantite]) > 0) {
+                    if (intval($_POST[$nomQuantite]) > 0) {
                         $arr_quantite[$index] = intval($_POST[$nomQuantite]);
                     } else {
                         $arr_error[$index] = "Quantité doit être un nombre entier supérieur à 0";
