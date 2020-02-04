@@ -98,7 +98,7 @@ if(isset($_POST['buttonAddArticle'])) {
         } ?>
         <br>
         <div class=" col-sm-2 d-inline-flex ">
-            <button class="btn btn-primary p-2" type="submit" name="buttonSubmit"> Soumettre / Calculer le total</button>
+            <button class="btn btn-primary p-2" type="submit" name="buttonSubmit"> Calculer le total</button>
 
             <button class="btn btn-primary p-2" type="submit" name="buttonAddArticle"> Revenir au catalogue</button>
         </div>
