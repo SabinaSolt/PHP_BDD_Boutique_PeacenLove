@@ -1,7 +1,8 @@
 <?php session_start(); ?>
 
 <!DOCTYPE html>
-<?php include ('catalogue.php');?>
+<?php include ('catalogue.php');
+include('functions.php');?>
 <html>
 <head>
     <title> Boutique Peace'n'love </title>
@@ -25,7 +26,7 @@
     <ul class ="nav justify-content-end nav-tabs">
         <li class ="nav-item"><a class="nav-link" href="addArticle.php">Catalogue</a></li>
         <li class ="nav-item"><a class="nav-link" href="panier.php">Mon Panier</a></li>
-        <li class ="nav-item"><a class="nav-link" href="">Vider le panier</a></li>
+        <li class ="nav-item"><a class="nav-link" href="panier.php?fonction=deletePanier">Vider le panier</a></li>
 
     </ul>
 </div>
