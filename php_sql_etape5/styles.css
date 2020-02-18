@@ -1,0 +1,70 @@
+header {
+    background-image: url(images/bisou.jpg) ;
+    background-size: cover;
+    color: #e01462;
+    padding: 5%;
+}
+
+
+.separation {
+    width: 70%;
+    margin:auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.table .thead-dark .table-title {
+    background-color: #372F2E;
+    color:white;
+    text-align: center;
+}
+.hero {
+    text-align: center;
+}
+.hero .titre_catalogue {
+    font-size: 200px;
+    line-height: 30vh;
+    font-weight: bold;
+    margin-top: 3.3rem;
+}
+.hero p {
+    background-color: lightblue;
+    opacity: 0.7;
+    font-size: 20px;
+    color: black;
+}
+.navigation_interne {
+    background-color: lightgrey;
+    opacity: 0.7;
+    font-size: 20px;
+}
+
+.formulaire .row {
+    font-size: 25px;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+.row .price {
+    background-color: lightgrey;
+    padding: 50px;
+    margin-top:10px;
+    margin-bottom: 10px;
+  }
+.formulaire img{
+    width:auto;
+    max-width:90%;
+    max-height: 18vh ;
+    margin:auto;
+    padding: 2%;
+}
+.formulaire .row .error {
+    font-size: 10px;
+
+}
+.formulaire .row .item-desc {
+    font-size: 15px;
+}
+
