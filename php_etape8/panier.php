@@ -50,7 +50,7 @@ if(!empty($_SESSION['checkBoxes'])) {
 }
 // revenir à la page catalogue
 if(isset($_POST['buttonAddArticle'])) {
-    header("Location:http://localhost/tests_Sabina/PHP_Sabina/php_etape8/addArticle.php");
+    header("Location:index.php");
     exit;
 }
 

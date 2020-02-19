@@ -24,7 +24,7 @@ include('functions.php');?>
 <div class="navigation_interne">
 
     <ul class ="nav justify-content-end nav-tabs">
-        <li class ="nav-item"><a class="nav-link" href="addArticle.php">Catalogue</a></li>
+        <li class ="nav-item"><a class="nav-link" href="index.php">Catalogue</a></li>
         <li class ="nav-item"><a class="nav-link" href="panier.php">Mon Panier</a></li>
         <li class ="nav-item"><a class="nav-link" href="panier.php?fonction=deletePanier">Vider le panier</a></li>
 
