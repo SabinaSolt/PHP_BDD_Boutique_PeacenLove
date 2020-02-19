@@ -39,12 +39,14 @@ header {
     font-size: 20px;
 }
 
+
 .formulaire .row {
     font-size: 25px;
     align-items: center;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
+
 }
 
 .row .price {
@@ -68,3 +70,7 @@ header {
     font-size: 15px;
 }
 
+ body .formulaire  {
+
+
+}
