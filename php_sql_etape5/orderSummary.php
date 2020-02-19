@@ -39,9 +39,12 @@ echo '<div class="container p-3 my-3 border bg-dark text-white text-center font-
             </div>
             <?php
         }
-
-        echo '<div class=" row sous-total container bg-light text-dark rounded col-sm-3 float-right" > Total: ',
-        totalPanier($bdd, $_SESSION['checkBoxes'], $_SESSION['quantite']), ' €</div>';
+        $requete6=$bdd->prepare("SELECT montantCommande FROM commande WHERE idCommande=:numCommande");
+        $requete6->bindParam(':numCommande',$_SESSION['newIO'][0]);
+        $requete6->execute();
+        $totalCommande=$requete6->fetchColumn();
+        echo '<div class=" row sous-total container  bg-light text-dark rounded col-sm-3 float-right" > Total: ',
+        $totalCommande, ' €</div>';
         ?>
         <br>
     </form>
