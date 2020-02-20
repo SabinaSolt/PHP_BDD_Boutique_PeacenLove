@@ -50,7 +50,7 @@ if(!empty($_SESSION['checkBoxes'])) {
 }
 // revenir à la page catalogue
 if(isset($_POST['buttonPlaceOrder'])) {
-    header("Location:customerInfo.php");
+    header("Location:choixLivraison.php");
     exit;
 }
 

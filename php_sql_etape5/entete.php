@@ -33,6 +33,5 @@ $catalog->execute();
         <li class ="nav-item"><a class="nav-link" href="index.php">Catalogue</a></li>
         <li class ="nav-item"><a class="nav-link" href="panier.php">Mon Panier</a></li>
         <li class ="nav-item"><a class="nav-link" href="panier.php?fonction=deletePanier">Vider le panier</a></li>
-
     </ul>
 </div>

@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
        //incrementer le numero de la commande
        $newIO=incrementIO($bdd);
        $_SESSION['newIO'][0] =$newIO;
-       // Cree la ligne de commande
+       // Cree la commande
        $requete3=$bdd->prepare("INSERT INTO `commande`(`idCommande`, `dateCommande`,`idClient`,`montantCommande`)
                         VALUES (?, CURRENT_DATE(),? ,? )");
        $arr_createCustOrd =[$newIO, $newCustomerId, $montant];
@@ -48,8 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         }
        header("Location:orderSummary.php");
        exit;
-
-
    }
 }
 ?>
