@@ -43,10 +43,20 @@ echo '<div class="container p-3 my-3 border bg-dark text-white text-center font-
         $requete6->bindParam(':numCommande',$_SESSION['newIO'][0]);
         $requete6->execute();
         $totalCommande=$requete6->fetchColumn();
-        echo '<div class=" row sous-total container  bg-light text-dark rounded col-sm-3 float-right" > Total: ',
+        echo ' <div class="btn-group-vertical row m-3 float-right"> 
+        <div class=" row sous-total container  bg-light text-dark rounded mb-3" > Total: ',
         $totalCommande, ' €</div>';
         ?>
-        <br>
+        <div class="row sous-total container bg-light text-dark rounded mb-3 ">
+            Frais de Livraison: <?=  $_SESSION['fraisTransport']?>€
+        </div>
+        <div class="row sous-total container bg-light text-dark rounded mb-3 ">
+            Total
+            Commande: <?= $_SESSION['montantAvecTransp']?>
+            €
+        </div>
+        </div>
+
     </form>
 </div>
 </body>
