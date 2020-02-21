@@ -1,7 +1,6 @@
 <?php
 include('entete.php');
-var_dump($_SESSION);
-unset($_SESSION['id_trasp']);
+;
 echo '<div class="container p-3 my-3 border bg-dark text-white text-center font-weight-bold rounded"
         style="font-size:30px;">'. 'Votre commande a été passée. Le numéro de votre commande: '.$_SESSION['newIO'][0] .'</div>';
 //var_dump($_SESSION);
