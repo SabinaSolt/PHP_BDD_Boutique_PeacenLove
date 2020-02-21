@@ -1,6 +1,7 @@
 <?php
 include('entete.php');
-
+var_dump($_SESSION);
+unset($_SESSION['id_trasp']);
 echo '<div class="container p-3 my-3 border bg-dark text-white text-center font-weight-bold rounded"
         style="font-size:30px;">'. 'Votre commande a été passée. Le numéro de votre commande: '.$_SESSION['newIO'][0] .'</div>';
 //var_dump($_SESSION);
@@ -38,25 +39,27 @@ echo '<div class="container p-3 my-3 border bg-dark text-white text-center font-
                 <div class ="col-sm-2 "> <?php echo number_format($orderItem['prixUnit']*$orderItem['quantiteCommande'],2) ?> €</div>
             </div>
             <?php
+
         }
         $requete6=$bdd->prepare("SELECT montantCommande FROM commande WHERE idCommande=:numCommande");
         $requete6->bindParam(':numCommande',$_SESSION['newIO'][0]);
         $requete6->execute();
         $totalCommande=$requete6->fetchColumn();
-        echo ' <div class="btn-group-vertical row m-3 float-right"> 
-        <div class=" row sous-total container  bg-light text-dark rounded mb-3" > Total: ',
-        $totalCommande, ' €</div>';
-        ?>
-        <div class="row sous-total container bg-light text-dark rounded mb-3 ">
-            Frais de Livraison: <?=  $_SESSION['fraisTransport']?>€
-        </div>
-        <div class="row sous-total container bg-light text-dark rounded mb-3 ">
-            Total
-            Commande: <?= $_SESSION['montantAvecTransp']?>
-            €
-        </div>
-        </div>
-
+        echo '<div class="row my-3 bg-light text-dark rounded">
+                    <div class="btn-group-vertical m-3 "> 
+                        <div class=" row sous-total container  bg-light text-dark rounded mb-3 " > Total: ',
+                        $totalCommande, ' €</div>';
+            ?>
+                        <div class="row sous-total container bg-light text-dark rounded mb-3 ">
+                            Frais de Livraison: <?=  $_SESSION['fraisTransport']?>€
+                        </div>
+                        <div class="row sous-total container bg-light text-dark rounded mb-3 ">
+                            Total
+                            Commande: <?= $_SESSION['montantAvecTransp']?>
+                            €
+                        </div>
+                    </div>
+                </div>
     </form>
 </div>
 </body>
