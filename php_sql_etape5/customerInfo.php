@@ -35,9 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
        $newIO=incrementIO($bdd);
        $_SESSION['newIO'][0] =$newIO;
        // Cree la commande
-       $requete3=$bdd->prepare("INSERT INTO `commande`(`idCommande`, `dateCommande`,`idClient`,`montantCommande`)
-                        VALUES (?, CURRENT_DATE(),? ,? )");
-       $arr_createCustOrd =[$newIO, $newCustomerId, $montant];
+       $requete3=$bdd->prepare("INSERT INTO `commande`(`idCommande`, `dateCommande`,`idClient`,idTransporteur,
+                            `montantCommande`, fraisTransport, montantAvecTransp)
+                            VALUES (?, CURRENT_DATE(),? ,?,?,?,? )");
+       $arr_createCustOrd =[$newIO, $newCustomerId, $_SESSION['idTransport'], $montant,$_SESSION['fraisTransport'], $_SESSION['montantAvecTransp']];
        $requete3->execute($arr_createCustOrd);
        // Créer les lignes de la commande
        $requete4=$bdd->prepare("INSERT INTO `produitcommande`(`idCommande`,`idProduit`, `quantiteCommande`)
