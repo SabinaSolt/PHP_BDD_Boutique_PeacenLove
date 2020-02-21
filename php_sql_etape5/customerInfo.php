@@ -47,16 +47,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $arr_lineOrder =[ $newIO,$_SESSION['checkBoxes'][$index],$_SESSION['quantite'][$index]];
         $requete4->execute($arr_lineOrder);
         }
-       header("Location:orderSummary.php");
+       header("Location:orderSummary.php#phrase_accroche");
        exit;
    }
 }
 ?>
     <div class="container p-3 my-3 border bg-dark text-white rounded ">
-        <h2 class="form-label col-sm-12 text-center">Informations clients</h2>
+        <h2 class="form-label col-sm-12 text-center" id="form_client">Informations clients</h2>
         <br>
 
-             <form  class ="form formulaire" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="POST" enctype="multipart/form-data">
+             <form  class ="form formulaire" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#phrase_accroche" method ="POST" enctype="multipart/form-data">
                  <?php
 
                  {?>

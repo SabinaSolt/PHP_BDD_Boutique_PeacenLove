@@ -22,7 +22,7 @@ $catalog->execute();
 <body>
 <header class="hero" >
     <h2 class ="titre_catalogue d-sm-flex"> BOUTIQUE PEACE'N'LOVE </h2>
-    <p > Vous voulez en avoir plein les yeux? Votre porte-monnaie pèse trop lourd?
+    <p id="phrase_accroche"> Vous voulez en avoir plein les yeux? Votre porte-monnaie pèse trop lourd?
         Alors venez faire un tour dans mon e-boutique -
         le meilleur magasin en ligne du prêt-à-porter dans tout Apprieu!</p>
 </header>
@@ -30,8 +30,8 @@ $catalog->execute();
 <div class="navigation_interne">
 
     <ul class ="nav justify-content-end nav-tabs">
-        <li class ="nav-item"><a class="nav-link" href="index.php">Catalogue</a></li>
-        <li class ="nav-item"><a class="nav-link" href="panier.php">Mon Panier</a></li>
-        <li class ="nav-item"><a class="nav-link" href="panier.php?fonction=deletePanier">Vider le panier</a></li>
+        <li class ="nav-item"><a class="nav-link" href="index.php#nos_articles">Catalogue</a></li>
+        <li class ="nav-item"><a class="nav-link" href="panier.php#votre_panier">Mon Panier</a></li>
+        <li class ="nav-item"><a class="nav-link" href="panier.php#votre_panier?fonction=deletePanier">Vider le panier</a></li>
     </ul>
 </div>

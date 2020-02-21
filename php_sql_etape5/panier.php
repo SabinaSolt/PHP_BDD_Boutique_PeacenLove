@@ -47,20 +47,21 @@ if(!empty($_SESSION['checkBoxes'])) {
         }
     }
     $_SESSION['quantite'] =$arr_quantite;
+
 }
 // revenir à la page catalogue
-if(isset($_POST['buttonPlaceOrder'])) {
-    header("Location:choixLivraison.php");
+if(isset($_POST['buttonPlaceOrder']) AND !$alerte_erreur) {
+    header("Location:choixLivraison.php#phrase_accroche");
     exit;
 }
 
 ?>
 
 <div class="container p-3 my-3   border bg-dark text-white rounded ">
-    <h2 class="form-label col-sm-12 text-center">Nos articles</h2>
+    <h2 class="form-label col-sm-12 text-center " id="votre_panier">Votre panier</h2>
     <br>
 
-    <form  class ="form-horizontal m-3  formulaire " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="POST" enctype="multipart/form-data">
+    <form  class ="form-horizontal m-3  formulaire " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#phrase_accroche" method ="POST" enctype="multipart/form-data">
         <?php if(!empty($_SESSION['checkBoxes'])) {
             $basket=$bdd-> prepare("SELECT * FROM produit WHERE idProduit=?");
             foreach ($_SESSION['checkBoxes'] as $index => $iArticlePanier) {

@@ -5,10 +5,10 @@ echo '<div class="container p-3 my-3 border bg-dark text-white text-center font-
         style="font-size:30px;">'. 'Votre commande a été passée. Le numéro de votre commande: '.$_SESSION['newIO'][0] .'</div>';
 //var_dump($_SESSION);
 ?>
-<form  class ="form-horizontal formulaire " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"
+<form  class ="form-horizontal formulaire " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#phrase_accroche"
        method ="POST" enctype="multipart/form-data">
 <div class="container p-3 my-3 border bg-dark text-white rounded ">
-    <h2 class="form-label col-sm-12 text-center font-weight-bold">Récapitulatif de votre commande: </h2>
+    <h2 class="form-label col-sm-12 text-center font-weight-bold" id="order_sum">Récapitulatif de votre commande: </h2>
     <br>
     <div class="row container p-3  my-3 bg-light text-dark rounded text-left ">
         <div class="col-sm-12 font-weight-bold">Information client:</div>

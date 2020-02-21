@@ -16,16 +16,16 @@
             }
                 $_SESSION['checkBoxes'] = $arr_checkbox;
 
-               header("Location:panier.php");
+               header("Location:panier.php#phrase_accroche");
                exit;
         }
         ?>
 
     <div class="container p-3 my-3 border bg-dark text-white rounded ">
-        <h2 class="form-label col-sm-12 text-center">Nos articles</h2>
+        <h2 class="form-label col-sm-12 text-center" id="nos_articles">Nos articles</h2>
         <br>
 
-             <form  class ="form-horizontal formulaire" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="POST" enctype="multipart/form-data">
+             <form  class ="form-horizontal formulaire" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#phrase_accroche" method ="POST" enctype="multipart/form-data">
                  <?php
                   while($item = $catalog->fetch())
                  {?>
