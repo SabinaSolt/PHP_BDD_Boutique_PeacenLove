@@ -75,7 +75,7 @@ function displayCat (Catalogue $cat) {?>
                     <div class ="col-sm-2 "><?php echo $item->getNom()?> </div>
                      <div class ="col-sm-4 item-desc "><?php echo $item->getDescription()?> </div>
                      <div class ="col-sm-2 rounded-circle price "> <?php echo $item->getPrix() ?> €</div>
-                    <input class="form-control col-sm-1 " type="checkbox" name ="<?php echo 'checkbox'.$item->getIdProduit()?>">
+                    <input class="form-control col-sm-1 " type="checkbox" name ="<?php echo 'checkbox'.$item->getId()?>">
 
                  </div>
         <?php } ?>
@@ -85,6 +85,29 @@ function displayCat (Catalogue $cat) {?>
              </form>
 
    <?php
+}
+
+function displayListClients (ListClients $list) {?>
+    <form  class ="form-horizontal formulaire" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#phrase_accroche" method ="POST" enctype="multipart/form-data">
+        <?php foreach($list->getListClients() as $index=>$client) {?>
+            <div class="row container bg-light text-dark rounded ">
+
+                <div class ="col-sm-1 item-desc"><?php echo $client->getId()?> </div>
+                <div class ="col-sm-2 item-desc"><?php echo $client->getPrenom()?> </div>
+                <div class ="col-sm-2 item-desc"><?php echo $client->getNom()?> </div>
+                <div class ="col-sm-3 item-desc"><?php echo $client->getAdresse()?> </div>
+                <div class ="col-sm-1 item-desc"><?php echo $client->getCodePostale()?> </div>
+                <div class ="col-sm-3 item-desc"><?php echo $client->getVille()?> </div>
+<!--                <input class="form-control col-sm-1 " type="checkbox" name ="--><?php //echo 'checkbox'.$client->getId()?><!--">-->
+
+            </div>
+        <?php } ?>
+        <br>
+        <button class="btn btn-primary" type="submit" name="buttonSubmit"> Soumettre </button>
+
+    </form>
+
+    <?php
 }
 ?>
 

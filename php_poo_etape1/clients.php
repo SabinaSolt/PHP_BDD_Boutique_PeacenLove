@@ -22,10 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") //Vérifie que le formulaire a été p
 ?>
 
 <div class="container p-3 my-3 border bg-dark text-white rounded ">
-    <h2 class="form-label col-sm-12 text-center" id="nos_articles">Nos articles</h2>
+    <h2 class="form-label col-sm-12 text-center" id="nos_articles">Nos Clients</h2>
+    <h2 class="form-label col-sm-12 text-center" id="nos_articles">!CONFIDENTIEL!</h2>
     <br> <?php
-    $catalogueArticles= new Catalogue($bdd);
-    displayCat($catalogueArticles);
+    $listClients= new ListClients($bdd);
+    displayListClients($listClients);
 
     ?>
 </div>

@@ -20,11 +20,15 @@ $catalog->execute();
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 </head>
 <body>
-<header class="hero" >
-    <h2 class ="titre_catalogue d-sm-flex"> BOUTIQUE PEACE'N'LOVE </h2>
+
+
+<header class="hero " >
+    <div class="">
+        <p class ="titre_catalogue "> BOUTIQUE PEACE'N'LOVE </p>
     <p id="phrase_accroche"> Vous voulez en avoir plein les yeux? Votre porte-monnaie pèse trop lourd?
         Alors venez faire un tour dans mon e-boutique -
         le meilleur magasin en ligne du prêt-à-porter dans tout Apprieu!</p>
+    </div>
 </header>
 
 <div class="navigation_interne">

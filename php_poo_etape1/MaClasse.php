@@ -11,8 +11,9 @@ class Catalogue {
 
         while ($d=$q->fetch(PDO:: FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array
         {
-           // $item = new Article($donnees);
+
             $item=new Article();
+
             $item->setNom($d['nomProduit']);
             $item->setDescription($d['descriptionProduit']);
             $item->setPrix($d['prix']);
@@ -70,7 +71,7 @@ private $_categorie;
     public function getDisponible() {
         return $this->_disponible;
     }
-    public function getIdProduit() {
+    public function getId() {
         return $this->_idProduit;
     }
     public function getCategorie() {
@@ -81,6 +82,7 @@ private $_categorie;
         if(is_string($nom)) {
             $this->_nom=$nom;
         }
+
     }
     public function setDescription($description) {
         if(is_string($description)) {
@@ -125,11 +127,90 @@ private $_categorie;
           $this->_categorie=$cat;
       }
     }
-
-
 }
 
+class ListClients {
+    private $_arr_clients=[];
 
+
+    public function __construct(PDO $db) {
+        // retourne la liste de tous les produits
+
+        $q=$db->query("SELECT idClient, nomClient, prenomClient, adresse, codePostale, ville FROM client");
+
+        while ($d=$q->fetch(PDO:: FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array
+        {
+
+            $client=new Client();
+            $client->setNom($d['nomClient']);
+            $client->setId($d['idClient']);
+            $client->setPrenom($d['prenomClient']);
+            $client->setAdresse($d['adresse']);
+            $client->setCodePostale($d['codePostale']);
+            $client->setVille($d['ville']);
+
+
+            $this->_arr_clients[]=$client;
+        }
+    }
+
+    public function addClient (Client $client) {
+        $this->_arr_clients[]=$client;
+    }
+
+    public function getListClients() {
+        return $this->_arr_clients;
+    }
+}
+
+class Client {
+    private $_id;
+    private $_nom;
+    private $_prenom;
+    private $_adresse;
+    private $_codePostale;
+    private $_ville;
+
+    public function getNom() {
+        return $this->_nom;
+    }
+    public function getId() {
+        return $this->_id;
+    }
+    public function getPrenom() {
+        return $this->_prenom;
+    }
+    public function getAdresse() {
+        return $this->_adresse;
+    }
+    public function getCodePostale() {
+        return $this->_codePostale;
+    }
+    public function getVille() {
+        return $this->_ville;
+    }
+
+    public function setNom($nom) {
+        if(is_string($nom)) {
+            $this->_nom=$nom;
+        }
+    }
+    public function setId($id) {
+        $this->_id=$id;
+    }
+    public function setPrenom($prenom) {
+        $this->_prenom=$prenom;
+    }
+    public function setAdresse($adresse) {
+        $this->_adresse=$adresse;
+    }
+    public function setCodePostale($codePostale) {
+        $this->_codePostale=$codePostale;
+    }
+    public function setVille($ville) {
+        $this->_ville=$ville;
+    }
+}
 
 
 
