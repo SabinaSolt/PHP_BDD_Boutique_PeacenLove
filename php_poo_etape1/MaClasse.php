@@ -7,9 +7,47 @@ class Catalogue
 
     public function __construct(PDO $db)
     {
-        $this->setItems($db);
-        $this->setChaussures($db);
-        $this->setVetements($db);
+        // retourne la liste de tous les produits y compris chaussures et vetements
+
+        $q = $db->query("SELECT nomProduit, descriptionProduit, prix, imageProduit,
+                        poids, quantiteStock, disponible, produit.idProduit, idCategorieProduit,
+                        chaussures.id, chaussures.pointure, vetements.id, vetements.taille
+                        FROM produit
+                        LEFT JOIN chaussures ON chaussures.idProduit=produit.idProduit 
+                        LEFT JOIN vetements ON vetements.idProduit=produit.idProduit");
+
+        while ($d = $q->fetch(PDO:: FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array
+        {
+            if(isset($d['pointure']))
+            {
+                $item = new Chaussure();
+                $item->setId($d['id']);
+                $item->setPointure($d['pointure']);
+            }
+            elseif (isset($d['taille']))
+            {
+                $item = new Vetement();
+                $item->setId($d['id']);
+                $item->setTaille($d['taille']);
+            }
+            else
+            {
+                $item = new Article();
+            }
+
+            $item->setNom($d['nomProduit']);
+            $item->setDescription($d['descriptionProduit']);
+            $item->setPrix($d['prix']);
+            $item->setImage($d['imageProduit']);
+            $item->setPoids($d['poids']);
+            $item->setStock($d['quantiteStock']);
+            $item->setDisponible($d['disponible']);
+            $item->setIdProduit($d['idProduit']);
+            $item->setCategorie($d['idCategorieProduit']);
+
+            $this->_arr_items[] = $item;
+        }
+
     }
 
     public function addItem(Article $item)
@@ -20,91 +58,6 @@ class Catalogue
     public function getListItem()
     {
         return $this->_arr_items;
-    }
-
-    public function setItems(PDO $db)
-    {
-        // retourne la liste de tous les produits hors chaussures et hors vetements
-
-        $q = $db->query("SELECT nomProduit, descriptionProduit, prix, imageProduit,
-                poids, quantiteStock, disponible, produit.idProduit, idCategorieProduit FROM produit
-                LEFT JOIN chaussures ON chaussures.idProduit=produit.idProduit 
-                LEFT JOIN vetements ON vetements.idProduit=produit.idProduit
-                WHERE chaussures.idProduit IS NULL AND vetements.idProduit IS NULL");
-
-        while ($d = $q->fetch(PDO:: FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array
-        {
-
-            $item = new Article();
-
-            $item->setNom($d['nomProduit']);
-            $item->setDescription($d['descriptionProduit']);
-            $item->setPrix($d['prix']);
-            $item->setImage($d['imageProduit']);
-            $item->setPoids($d['poids']);
-            $item->setStock($d['quantiteStock']);
-            $item->setDisponible($d['disponible']);
-            $item->setIdProduit($d['idProduit']);
-            $item->setCategorie($d['idCategorieProduit']);
-
-            $this->_arr_items[] = $item;
-        }
-    }
-    public function setChaussures(PDO $db)
-    {
-        // retourne la liste de tous les chaussures
-
-        $q = $db->query("SELECT nomProduit, descriptionProduit, prix, imageProduit,
-                poids, quantiteStock, disponible, produit.idProduit, idCategorieProduit, chaussures.id, chaussures.pointure
-                FROM produit
-                INNER JOIN chaussures ON chaussures.idProduit=produit.idProduit");
-
-        while ($d = $q->fetch(PDO:: FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array
-        {
-
-            $item = new Chaussure();
-
-            $item->setNom($d['nomProduit']);
-            $item->setDescription($d['descriptionProduit']);
-            $item->setPrix($d['prix']);
-            $item->setImage($d['imageProduit']);
-            $item->setPoids($d['poids']);
-            $item->setStock($d['quantiteStock']);
-            $item->setDisponible($d['disponible']);
-            $item->setIdProduit($d['idProduit']);
-            $item->setCategorie($d['idCategorieProduit']);
-            $item->setId($d['id']);
-            $item->setPointure($d['pointure']);
-            $this->_arr_items[] = $item;
-        }
-    }
-    public function setVetements(PDO $db)
-    {
-        // retourne la liste de tous les vetements
-
-        $q = $db->query("SELECT nomProduit, descriptionProduit, prix, imageProduit,
-                poids, quantiteStock, disponible, produit.idProduit, idCategorieProduit, vetements.id, vetements.taille
-                FROM produit
-                INNER JOIN vetements ON vetements.idProduit=produit.idProduit");
-
-        while ($d = $q->fetch(PDO:: FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array
-        {
-
-            $item = new Vetement();
-
-            $item->setNom($d['nomProduit']);
-            $item->setDescription($d['descriptionProduit']);
-            $item->setPrix($d['prix']);
-            $item->setImage($d['imageProduit']);
-            $item->setPoids($d['poids']);
-            $item->setStock($d['quantiteStock']);
-            $item->setDisponible($d['disponible']);
-            $item->setIdProduit($d['idProduit']);
-            $item->setCategorie($d['idCategorieProduit']);
-            $item->setId($d['id']);
-            $item->setTaille($d['taille']);
-            $this->_arr_items[] = $item;
-        }
     }
 }
 
