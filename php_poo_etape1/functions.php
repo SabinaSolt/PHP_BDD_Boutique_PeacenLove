@@ -73,7 +73,15 @@ function displayCat (Catalogue $cat) {?>
 
                     <div class="col-sm-3"> <img class ="" src =" <?php echo $item->getImage() ?> "alt="image"></div>
                     <div class ="col-sm-2 "><?php echo $item->getNom()?> </div>
-                     <div class ="col-sm-4 item-desc "><?php echo $item->getDescription()?> </div>
+                     <div class ="col-sm-3 item-desc "><?php echo $item->getDescription()?> </div>
+                     <?php if(is_a($item,"Chaussure")) {?>
+                     <div class ="col-sm-1 item-desc "><?php echo $item->getPointure()?> </div>
+                     <?php }
+                     elseif(is_a($item,"Vetement")) {?>
+                         <div class ="col-sm-1 item-desc "><?php echo $item->getTaille()?> </div>
+                     <?php }
+                     else{?><div class ="col-sm-1 item-desc "> </div>
+                     <?php } ?>
                      <div class ="col-sm-2 rounded-circle price "> <?php echo $item->getPrix() ?> €</div>
                     <input class="form-control col-sm-1 " type="checkbox" name ="<?php echo 'checkbox'.$item->getId()?>">
 

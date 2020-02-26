@@ -25,6 +25,7 @@
         <h2 class="form-label col-sm-12 text-center" id="nos_articles">Nos articles</h2>
         <br> <?php
         $catalogueArticles= new Catalogue($bdd);
+        //var_dump($catalogueArticles);
         displayCat($catalogueArticles);
 
         ?>
