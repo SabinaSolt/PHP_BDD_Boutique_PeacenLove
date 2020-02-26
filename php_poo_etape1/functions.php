@@ -67,7 +67,8 @@ function displayArticle(Article $item) { ?>
 <?php }
 
 function displayCat (Catalogue $cat) {?>
-     <form  class ="form-horizontal formulaire" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#phrase_accroche" method ="POST" enctype="multipart/form-data">
+     <form  class ="form-horizontal formulaire" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#phrase_accroche"
+            method ="POST" enctype="multipart/form-data">
         <?php foreach($cat->getListItem() as $index=>$item) {?>
                  <div class="row container my-3 bg-light text-dark rounded ">
 
@@ -83,7 +84,7 @@ function displayCat (Catalogue $cat) {?>
                      else{?><div class ="col-sm-1 item-desc "> </div>
                      <?php } ?>
                      <div class ="col-sm-2 rounded-circle price "> <?php echo $item->getPrix() ?> €</div>
-                    <input class="form-control col-sm-1 " type="checkbox" name ="<?php echo 'checkbox'.$item->getId()?>">
+                    <input class="form-control col-sm-1 " type="checkbox" name ="<?php echo 'checkbox'.$item->getIdProduit()?>">
 
                  </div>
         <?php } ?>

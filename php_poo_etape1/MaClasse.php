@@ -10,28 +10,20 @@ class Catalogue
         // retourne la liste de tous les produits y compris chaussures et vetements
 
         $q = $db->query("SELECT nomProduit, descriptionProduit, prix, imageProduit,
-                        poids, quantiteStock, disponible, produit.idProduit, idCategorieProduit,
-                        chaussures.id, chaussures.pointure, vetements.id, vetements.taille
-                        FROM produit
-                        LEFT JOIN chaussures ON chaussures.idProduit=produit.idProduit 
-                        LEFT JOIN vetements ON vetements.idProduit=produit.idProduit");
+                        poids, quantiteStock, disponible, produit.idProduit, idCategorieProduit
+                         FROM produit");
 
         while ($d = $q->fetch(PDO:: FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array
         {
-            if(isset($d['pointure']))
-            {
+            if (isset($d['pointure'])) {
                 $item = new Chaussure();
                 $item->setId($d['id']);
                 $item->setPointure($d['pointure']);
-            }
-            elseif (isset($d['taille']))
-            {
+            } elseif (isset($d['taille'])) {
                 $item = new Vetement();
                 $item->setId($d['id']);
                 $item->setTaille($d['taille']);
-            }
-            else
-            {
+            } else {
                 $item = new Article();
             }
 
@@ -110,7 +102,7 @@ class Article
         return $this->_disponible;
     }
 
-    public function getId()
+    public function getIdProduit()
     {
         return $this->_idProduit;
     }
@@ -192,26 +184,28 @@ class Chaussure extends Article
 {
     private $_pointure;
     private $_id;
+
     public function getPointure()
     {
         return $this->_pointure;
     }
+
     public function getId()
     {
         return $this->_id;
     }
+
     public function setPointure($pointure)
     {
-        if( isset($pointure))
-        {
-            $this->_pointure=$pointure;
+        if (isset($pointure)) {
+            $this->_pointure = $pointure;
         }
     }
+
     public function setId($id)
     {
-        if( isset($id))
-        {
-            $this->_id=$id;
+        if (isset($id)) {
+            $this->_id = $id;
         }
     }
 }
@@ -220,26 +214,28 @@ class Vetement extends Article
 {
     private $_taille;
     private $_id;
+
     public function getTaille()
     {
         return $this->_taille;
     }
+
     public function getId()
     {
         return $this->_id;
     }
+
     public function setTaille($taille)
     {
-        if(isset($taille))
-        {
-            $this->_taille=$taille;
+        if (isset($taille)) {
+            $this->_taille = $taille;
         }
     }
+
     public function setId($id)
     {
-        if(isset($id))
-        {
-            $this->_id=$id;
+        if (isset($id)) {
+            $this->_id = $id;
         }
     }
 }
@@ -354,5 +350,53 @@ class Client
     }
 }
 
+class Panier
+{
+    private $_basket = [];
+
+    public function getBasket()
+    {
+        $this->_basket;
+    }
+
+    public function setBasket(array $arr)
+    {
+        $this->_basket = $arr;
+    }
+
+    public function addItemBasket($id)
+    {
+        if(array_key_exists($id, $this->_basket))
+        {
+            $this->_basket[$id]++;
+        }
+        else
+        {
+            $this->_basket[$id]=1;
+        }
+    }
+
+    public function updateBasket($id, $quantite)
+    {
+        $quantite=(int)$quantite;
+
+        if(array_key_exists($id, $this->_basket))
+        {
+            $this->_basket[$id]=$this->_basket[$id]+$quantite;
+        }
+        else
+        {
+            $this->_basket[$id]=$quantite;
+        }
+    }
+
+    public function deleteItemBasket($id)
+    {
+        if(array_key_exists($id, $this->_basket))
+        {
+           unset($this->_basket[$id]);
+        }
+    }
+}
 
 ?>
