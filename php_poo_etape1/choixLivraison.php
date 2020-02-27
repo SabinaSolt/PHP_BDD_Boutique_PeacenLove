@@ -22,8 +22,8 @@ if (isset($_POST['optionLivr']) AND isset($_SESSION['frais_livr'])) {
                         FROM `produit` 
                         WHERE `idProduit`=:idItem");
         $poids = 0;
-        foreach ($_SESSION['checkBoxes'] as $index => $idItem) {
-            $requete5->bindParam(':idItem', $idItem);
+        foreach ($_SESSION['basket']->getBasket() as $index => $quantite) {
+            $requete5->bindParam(':idItem', $index);
             $requete5->execute();
 
             while ($orderItem = $requete5->fetch()) {
@@ -33,25 +33,25 @@ if (isset($_POST['optionLivr']) AND isset($_SESSION['frais_livr'])) {
                     <div class="col-sm-3"><img class="" src=" <?php echo $orderItem['imageProduit'] ?> " alt="image">
                     </div>
                     <div class="col-sm-2 "><?php echo $orderItem['nomProduit'] ?> </div>
-                    <div class="col-sm-1  "><?php echo $_SESSION['quantite'][$index] ?> </div>
+                    <div class="col-sm-1  "><?php echo $quantite ?> </div>
                     <div
-                        class="col-sm-2 "><?php echo number_format($orderItem['poids'] * $_SESSION['quantite'][$index] / 1000, 2) ?>
+                        class="col-sm-2 "><?php echo number_format($orderItem['poids'] * $quantite / 1000, 2) ?>
                         kg
                     </div>
                     <div class="col-sm-2 "> <?php echo $orderItem['prixUnit'] ?> €</div>
                     <div
-                        class="col-sm-2 "> <?php echo number_format($orderItem['prixUnit'] *$_SESSION['quantite'][$index], 2) ?>
+                        class="col-sm-2 "> <?php echo number_format($orderItem['prixUnit'] *$quantite, 2) ?>
                         €
                     </div>
                 </div>
                 <?php
                 //calcule le poids total de la commande
-                $poids = $poids + ($orderItem['poids'] * $_SESSION['quantite'][$index] / 1000);
+                $poids = $poids + ($orderItem['poids'] * $quantite / 1000);
             }
         }
 
         //calcule le total de la commande avant les frais de livraison
-        $totalCommande = totalPanier($bdd, $_SESSION['checkBoxes'], $_SESSION['quantite']);
+        $totalCommande = totalPanier($bdd, $_SESSION['basket']);
 
         echo '<div class ="row container ">';
 

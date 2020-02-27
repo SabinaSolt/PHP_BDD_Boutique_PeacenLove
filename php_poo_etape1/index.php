@@ -20,6 +20,8 @@
             }
                 $_SESSION['basket'] = $basket;
                 var_dump($basket);
+                $a=$basket->getBasket();
+                var_dump($a);
                header("Location:panier.php#phrase_accroche");
                exit;
         }

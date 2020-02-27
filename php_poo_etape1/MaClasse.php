@@ -356,7 +356,7 @@ class Panier
 
     public function getBasket()
     {
-        $this->_basket;
+        return $this->_basket;
     }
 
     public function setBasket(array $arr)
@@ -382,7 +382,7 @@ class Panier
 
         if(array_key_exists($id, $this->_basket))
         {
-            $this->_basket[$id]=$this->_basket[$id]+$quantite;
+            $this->_basket[$id]=$quantite;
         }
         else
         {
@@ -396,6 +396,11 @@ class Panier
         {
            unset($this->_basket[$id]);
         }
+    }
+
+    public function viderBasket()
+    {
+        $this->_basket=[];
     }
 }
 

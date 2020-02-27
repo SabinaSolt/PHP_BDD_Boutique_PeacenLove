@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
        $newCustomerId=$bdd->lastInsertId();
 
        // Calculer le total de la commande
-       $montant=totalPanier($bdd, $_SESSION['checkBoxes'], $_SESSION['quantite']);
+       $montant=totalPanier($bdd, $_SESSION['basket']);
 
        // Créer la nouvelle commande
        //incrementer le numero de la commande
@@ -43,8 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
        // Créer les lignes de la commande
        $requete4=$bdd->prepare("INSERT INTO `produitcommande`(`idCommande`,`idProduit`, `quantiteCommande`)
                         VALUES 	(?, ?, ?)");
-        foreach ($_SESSION['checkBoxes'] as $index=>$idProduit) {
-        $arr_lineOrder =[ $newIO,$_SESSION['checkBoxes'][$index],$_SESSION['quantite'][$index]];
+        foreach ($_SESSION['basket']->getBasket() as $index=>$quantite) {
+        $arr_lineOrder =[ $newIO,$index,$quantite];
         $requete4->execute($arr_lineOrder);
         }
        header("Location:orderSummary.php#phrase_accroche");

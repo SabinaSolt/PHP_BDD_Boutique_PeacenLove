@@ -2,19 +2,19 @@
 
 <?php
 
-function totalPanier($p_bdd, $p_arr_checkboxes, $p_arr_quantite) {
+function totalPanier(PDO $p_bdd, Panier $panier) {
     $totalPanier =0;
     $basket=$p_bdd-> prepare("SELECT * FROM produit WHERE idProduit=?");
-    foreach($p_arr_checkboxes as $index=>$p_checkbox) {
-        $basket->execute(array($p_checkbox));
+    foreach($panier->getBasket() as $index=>$quantite) {
+        $basket->execute(array($index));
         $item=$basket->fetch();
-        $totalPanier = $totalPanier + floatval($item['prix'])*intval($p_arr_quantite[$index]);
+        $totalPanier = $totalPanier + floatval($item['prix'])*intval($quantite);
     }
     return $totalPanier;
 };
 
 function deletePanier () {
-    $_SESSION['checkBoxes'] = [];
+
 }
 
 //incrementer le numero de la commande
@@ -112,12 +112,54 @@ function displayListClients (ListClients $list) {?>
             </div>
         <?php } ?>
         <br>
-        <button class="btn btn-primary" type="submit" name="buttonSubmit"> Soumettre </button>
+<!--        <button class="btn btn-primary" type="submit" name="buttonSubmit"> Soumettre </button>-->
 
     </form>
 
     <?php
-}
-?>
+}?>
+
+
+<?php function displayPanier(Panier $panier, PDO $bd)
+{?>
+<!--    <form  class ="form-horizontal m-3  formulaire " action="--><?php //echo htmlspecialchars($_SERVER["PHP_SELF"]);?><!--#phrase_accroche" method ="POST" enctype="multipart/form-data">-->
+        <?php if(!empty($panier)) {
+            $requete=$bd-> prepare("SELECT * FROM produit WHERE idProduit=?");
+            foreach ($panier->getBasket() as $index => $quantite) {
+                $requete->execute(array($index));
+                $item=$requete->fetch();
+                ?>
+
+                <div class="row my-3 bg-light text-dark rounded ">
+
+                    <div class="col-sm-2"><img class="" src=" <?php echo $item['imageProduit'] ?> "
+                                               alt="image"></div>
+                    <div class="col-sm-2 "><?php echo $item['nomProduit'] ?> </div>
+                    <div class ="col-sm-3 item-desc "><?php echo $item['descriptionProduit']?> </div>
+                    <div class="col-sm-2  rounded-circle price  "> <?php echo $item['prix'] ?>
+                        €
+                    </div>
+                    <input class="form-control col-sm-1 " type="checkbox" name="<?php echo 'checkbox' . $item['idProduit'] ?>"
+                           checked>
+                    <div class=" col-sm-2 text-left"> Quantité: <input class=" col-sm-12 " type="number"
+                                                                       name="<?php echo 'quantite' . $index ?>"
+                                                                       value="<?php echo $panier->getBasket()[$index] ?>">
+                        <span class="error text-danger"> <?php
+                            if(isset($_SESSION['arr_error'])) {
+                                if(array_key_exists($index, $_SESSION['arr_error'])) {
+                                    echo $_SESSION['arr_error'][$index];
+                                }
+                            }?></span>
+                        <button class="btn btn-secondary " type="submit" name="<?php echo 'delete' . $index ?>">
+                            Supprimer
+                        </button>
+                    </div>
+
+                </div>
+                <?php
+            }
+        } ?>
+<!--    </form>-->
+<?php } ?>
 
 

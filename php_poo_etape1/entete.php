@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+require_once 'MaClasse.php';
+session_start(); ?>
 
 <!DOCTYPE html>
 <?php
@@ -7,7 +9,7 @@ $bdd= new PDO ('mysql: host=localhost; dbname=mydb; charset=utf8; port=3308',
 include('functions.php');
 //$catalog=$bdd->prepare("SELECT * FROM produit");
 //$catalog->execute();
-require 'MaClasse.php';
+
 ?>
 
 <html>
@@ -37,6 +39,6 @@ require 'MaClasse.php';
     <ul class ="nav justify-content-end nav-tabs">
         <li class ="nav-item"><a class="nav-link" href="index.php#nos_articles">Catalogue</a></li>
         <li class ="nav-item"><a class="nav-link" href="panier.php#votre_panier">Mon Panier</a></li>
-        <li class ="nav-item"><a class="nav-link" href="panier.php#votre_panier?fonction=deletePanier">Vider le panier</a></li>
+        <li class ="nav-item"><a class="nav-link" href="#votre_panier?fonction=deletePanier">Vider le panier</a></li>
     </ul>
 </div>
