@@ -11,7 +11,19 @@ class Catalogue
 
         $q = $db->query("SELECT nomProduit, descriptionProduit, prix, imageProduit,
                         poids, quantiteStock, disponible, produit.idProduit, idCategorieProduit
-                         FROM produit");
+                         FROM produit
+                         
+                         ");
+
+        // requete SQL retourne la liste de tous les produits y compris chaussures et vetements
+//        $q = $db->query("SELECT nomProduit, descriptionProduit, prix, imageProduit,
+//                        poids, quantiteStock, disponible, produit.idProduit, idCategorieProduit,
+//                         chaussures.id, chaussures.pointure, vetements.id, vetements.taille
+//                         FROM produit
+//                         LEFT JOIN chaussures ON chaussures.idProduit=produit.idProduit
+//                         LEFT JOIN vetements ON vetements.idProduit=produit.idProduit
+//                         ");
+
 
         while ($d = $q->fetch(PDO:: FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array
         {
