@@ -6,6 +6,7 @@ session_start(); ?>
 <?php
 $bdd= new PDO ('mysql: host=localhost; dbname=mydb; charset=utf8; port=3308',
     'Sabina','Sabina1', array(PDO:: ATTR_ERRMODE=> PDO::ERRMODE_EXCEPTION) );
+$bdd ->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 include('functions.php');
 //$catalog=$bdd->prepare("SELECT * FROM produit");
 //$catalog->execute();

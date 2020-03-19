@@ -390,7 +390,7 @@ class Panier
 
     public function updateBasket($id, $quantite)
     {
-        $quantite=(int)$quantite;
+        $quantite=(int)htmlspecialchars($quantite);
 
         if(array_key_exists($id, $this->_basket))
         {

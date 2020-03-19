@@ -31,7 +31,7 @@ if(!empty($_SESSION['basket']->getBasket())) {
                     // verifie que la quantité est un entier
                     if (intval($_POST[$nomQuantite]) > 0) {
                         // ajoute la quantite dans le panier
-                        $_SESSION['basket']->updateBasket($index,$_POST[$nomQuantite]);
+                        $_SESSION['basket']->updateBasket($index,htmlspecialchars(intval($_POST[$nomQuantite])));
                     } else {
                         $arr_error[$index] = "Quantité doit être un nombre entier supérieur à 0";
                         $alerte_erreur = true;

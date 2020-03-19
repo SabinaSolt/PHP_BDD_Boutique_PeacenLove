@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
    if($emptyField==0) {
        // crée un tableau avec les infos client
        foreach ($arr_inputFields as $index=>$inputField){
-           $arr_inputClient[$index] =$_POST[$inputField];
+           $arr_inputClient[$index] =htmlspecialchars($_POST[$inputField]);
        }
        $_SESSION['currentCustomer'] =$arr_inputClient;
        // Insert le nouveau client dans BD
