@@ -33,9 +33,9 @@ echo '<div class="container p-3 my-3 border bg-dark text-white text-center font-
 
                 <div class="col-sm-3"> <img class ="" src =" <?php echo $orderItem['imageProduit'] ?> "alt="image"></div>
                 <div class ="col-sm-2 "><?php echo $orderItem['nomProduit']?> </div>
-                <div class ="col-sm-2  "><?php echo $orderItem['quantiteCommande']?> </div>
-                <div class ="col-sm-2 "> <?php echo $orderItem['prixUnit'] ?> €</div>
-                <div class ="col-sm-2 "> <?php echo number_format($orderItem['prixUnit']*$orderItem['quantiteCommande'],2) ?> €</div>
+                <div class ="col-sm-2 mt-2 "><?php echo $orderItem['quantiteCommande']?> </div>
+                <div class ="col-sm-2 mt-2"> <?php echo $orderItem['prixUnit'] ?> €</div>
+                <div class ="col-sm-2 font-weight-bold my-3"> <?php echo number_format($orderItem['prixUnit']*$orderItem['quantiteCommande'],2) ?> €</div>
             </div>
             <?php
 

@@ -59,7 +59,7 @@ if(isset($_POST['buttonPlaceOrder']) AND !$alerte_erreur) {
 <div class="container p-3 my-3   border bg-dark text-white rounded ">
     <h2 class="form-label col-sm-12 text-center " id="votre_panier">Votre panier</h2>
     <br>
-    <form  class ="form-horizontal m-3  formulaire " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#phrase_accroche" method ="POST" enctype="multipart/form-data">
+    <form  class ="form-horizontal m-3 formulaire " action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#phrase_accroche" method ="POST" enctype="multipart/form-data">
     <?php
     displayPanier($_SESSION['basket'], $bdd);
     ?>
@@ -68,11 +68,11 @@ if(isset($_POST['buttonPlaceOrder']) AND !$alerte_erreur) {
                 echo '<div class=" sous-total my-3  bg-light text-dark rounded col-sm-3 float-right" > Total: ',
                 totalPanier($bdd, $_SESSION['basket']), ' €</div>';
         } ?>
-        <br>
-        <div class=" col-sm-3 d-inline-flex ">
-            <button class="btn btn-primary p-2" type="submit" name="buttonSubmit"> Calculer le total</button>
 
-            <button class="btn btn-primary p-2" type="submit" name="buttonPlaceOrder"> Passer la commande</button>
+        <div class=" col-sm-3 d-inline-flex ">
+            <button class="btn btn-primary " type="submit" name="buttonSubmit"> Calculer le total</button>
+            <div class ="container px-2"></div>
+            <button class="btn btn-primary " type="submit" name="buttonPlaceOrder"> Passer la commande</button>
         </div>
     </form>
 </div>

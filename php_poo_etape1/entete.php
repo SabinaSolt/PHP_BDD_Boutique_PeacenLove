@@ -28,7 +28,7 @@ include('functions.php');
 
 <header class="hero " >
     <div class="">
-        <p class ="titre_catalogue "> BOUTIQUE PEACE'N'LOVE </p>
+       <div class="container"> <p class ="titre_catalogue "> BOUTIQUE PEACE'N' LOVE </p></div>
     <p id="phrase_accroche"> Vous voulez en avoir plein les yeux? Votre porte-monnaie pèse trop lourd?
         Alors venez faire un tour dans mon e-boutique -
         le meilleur magasin en ligne du prêt-à-porter dans tout Apprieu!</p>

@@ -83,8 +83,8 @@ function displayCat (Catalogue $cat) {?>
                      <?php }
                      else{?><div class ="col-sm-1 item-desc "> </div>
                      <?php } ?>
-                     <div class ="col-sm-2 rounded-circle price "> <?php echo $item->getPrix() ?> €</div>
-                    <input class="form-control col-sm-1 " type="checkbox" name ="<?php echo 'checkbox'.$item->getIdProduit()?>">
+                     <div class ="col-sm-2 mt-2 "> <?php echo $item->getPrix() ?> €</div>
+                    <input class="form-control col-sm-1 my-4 " type="checkbox" name ="<?php echo 'checkbox'.$item->getIdProduit()?>">
 
                  </div>
         <?php } ?>
@@ -136,12 +136,12 @@ function displayListClients (ListClients $list) {?>
                                                alt="image"></div>
                     <div class="col-sm-2 "><?php echo $item['nomProduit'] ?> </div>
                     <div class ="col-sm-3 item-desc "><?php echo $item['descriptionProduit']?> </div>
-                    <div class="col-sm-2  rounded-circle price  "> <?php echo $item['prix'] ?>
+                    <div class="col-sm-2 mt-2 "> <?php echo $item['prix'] ?>
                         €
                     </div>
-                    <input class="form-control col-sm-1 " type="checkbox" name="<?php echo 'checkbox' . $item['idProduit'] ?>"
+                    <input class="form-control col-sm-1 mt-2" type="checkbox" style="visibility:hidden" name="<?php echo 'checkbox' . $item['idProduit'] ?>"
                            checked>
-                    <div class=" col-sm-2 text-left"> Quantité: <input class=" col-sm-12 " type="number"
+                    <div class=" col-sm-2  mt-2"> Quantité: <input class=" col-sm-12 text-center " type="number"
                                                                        name="<?php echo 'quantite' . $index ?>"
                                                                        value="<?php echo $panier->getBasket()[$index] ?>">
                         <span class="error text-danger"> <?php
@@ -150,7 +150,7 @@ function displayListClients (ListClients $list) {?>
                                     echo $_SESSION['arr_error'][$index];
                                 }
                             }?></span>
-                        <button class="btn btn-secondary " type="submit" name="<?php echo 'delete' . $index ?>">
+                        <button class="btn btn-secondary my-3" type="submit" name="<?php echo 'delete' . $index ?>">
                             Supprimer
                         </button>
                     </div>

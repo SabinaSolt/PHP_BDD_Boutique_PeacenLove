@@ -32,15 +32,15 @@ if (isset($_POST['optionLivr']) AND isset($_SESSION['frais_livr'])) {
 
                     <div class="col-sm-3"><img class="" src=" <?php echo $orderItem['imageProduit'] ?> " alt="image">
                     </div>
-                    <div class="col-sm-2 "><?php echo $orderItem['nomProduit'] ?> </div>
-                    <div class="col-sm-1  "><?php echo $quantite ?> </div>
+                    <div class="col-sm-2 pb-2"><?php echo $orderItem['nomProduit'] ?> </div>
+                    <div class="col-sm-1 pb-2 "><?php echo $quantite ?> </div>
                     <div
-                        class="col-sm-2 "><?php echo number_format($orderItem['poids'] * $quantite / 1000, 2) ?>
+                        class="col-sm-2 pb-2 "><?php echo number_format($orderItem['poids'] * $quantite / 1000, 2) ?>
                         kg
                     </div>
-                    <div class="col-sm-2 "> <?php echo $orderItem['prixUnit'] ?> €</div>
+                    <div class="col-sm-2 pb-2"> <?php echo $orderItem['prixUnit'] ?> €</div>
                     <div
-                        class="col-sm-2 "> <?php echo number_format($orderItem['prixUnit'] *$quantite, 2) ?>
+                        class="col-sm-2 font-weight-bold pb-4"> <?php echo number_format($orderItem['prixUnit'] *$quantite, 2) ?>
                         €
                     </div>
                 </div>
